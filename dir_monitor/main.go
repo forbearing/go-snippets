@@ -67,7 +67,7 @@ func (w *Watch) watchDir(dir string) {
 					}
 				// Write event
 				case event.Op&fsnotify.Write == fsnotify.Write:
-					_, fileName := filepath.Split(event.Name)
+					_, fileName := filepath.Split(event.Name) // 获取文件的相对路径
 					log.Println(event.Op.String(), fileName)
 				// Rename event
 				case event.Op&fsnotify.Rename == fsnotify.Rename:
@@ -75,7 +75,7 @@ func (w *Watch) watchDir(dir string) {
 					log.Println(event.Op.String(), fileName)
 				// Chmod event
 				case event.Op&fsnotify.Chmod == fsnotify.Chmod:
-					_, fileName := filepath.Split(event.Name)
+					_, fileName := filepath.Split(event.Name) // 获取文件的相对路径
 					log.Println(event.Op.String(), fileName)
 				}
 
